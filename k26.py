@@ -3,12 +3,25 @@ from stanfordkarel import *
 
 def main():
     """ Karel code goes here! """
+    beepers_in_bag()
     move()
+    move()
+    turn_left()
+    turn_left()
+    turn_left()
     move()
     turn_left()
     move()
     move()
-    pick_beeper()
+    turn_left()
+    turn_left()
+    turn_left()
+    move()
+    put_beeper()
+    
+
+
+  
     pass
 
 

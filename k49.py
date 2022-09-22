@@ -1,4 +1,5 @@
 from stanfordkarel import *
+from time import sleep
 
 
 class ktools:
@@ -68,11 +69,53 @@ class ktools:
     self.m()
     self.m()
 
+  def fic(self) -> bool:
+    """Front is Clear"""
+    return front_is_clear()
+
+  def fib(self) -> bool:
+    """Front is Blocked"""
+    return not self.fic()
+
+  def ric(self) -> bool:
+    """Right is Clear"""
+    self.tr()
+    if self.fic():
+      self.tl()
+      return True  # Immediately leaves the function
+    self.tl()
+    return False
+
+  def rib(self) -> bool:
+    """Right is Blocked"""
+    return not self.ric()
+
+  def mazemove(self):
+    """Maze Move"""
+    if self.fib():
+      self.tl()
+    else:  # Otherwise...
+      self.m()
+      if self.ric():
+        self.tr()
+        self.m()
+        if self.ric():
+          self.tr()
+          self.m()
+    pass
+
 
 def main():
     """ Karel code goes here! """
     kt = ktools()
+    kt.m()
+    kt.tl()
+    kt.m()
+    kt.mazemove()
+    sleep(3)
     
+    kt.m()
+  
     pass
 
 
