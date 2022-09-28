@@ -117,53 +117,58 @@ class ktools:
 
   def putm(self, num):
     """Put Multiple"""
-    for _ in range(num-1):
+    for _ in range(0, num-1):
       self.put()
       self.m()
     self.put()
 
-  
+  def SOB(self) -> bool:
+    """Standing on Beeper"""
+    return beepers_present()
+
+  def jump(self):
+    """Jump for 510"""
+    while self.fic():
+      self.m()
+    self.tl()
+    while self.rib():
+      self.m()
+    self.tr()
+    self.m()
+    self.tr()
+    while self.fic():
+      self.m()
+    self.tl()
+
+  def find(self):
+    """Find for 515"""
+    while not facing_north():
+      self.tl()
+    self.m()
+    if not self.SOB():
+      self.tl()
+      self.m()
+      self.tl()
+      self.m()
+    for _ in range(2):
+      if not self.SOB():
+        self.m()
+        self.tl()
+        self.m()
+    pass
 
 
 def main():
     """ Karel code goes here! """
-    move()
-    move()
-    move()
-    move()
-    turn_left()
-    move()
-    pick_beeper()
-    move()
-    pick_beeper()
-    move()
-    pick_beeper()
-    move()
-    pick_beeper()
-    move()
-    pick_beeper()
-    turn_left()
-    move()
-    move()
-    turn_left()
-    move()
-    move()
-    turn_left()
-    put_beeper()
-    move()
-    put_beeper()
-    move()
-    put_beeper()
-    move()
-    put_beeper()
-    move()
-    put_beeper()
-    move()
-    
-
-
-
-  
+    kt = ktools()
+    kt.m()
+    kt.tl()
+    kt.m()
+    kt.tr()
+    kt.m()
+    while kt.SOB():
+      kt.pick()
+      kt.find()
     pass
 
 
